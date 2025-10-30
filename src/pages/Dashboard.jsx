@@ -3,7 +3,7 @@ import { useAuth, useUser } from "@clerk/clerk-react";
 import Navbar from "@/components/Navbar";
 import { CategoryPieChart } from "@/components/charts/CategoryPieChart";
 import { MonthlyTrendChart } from "@/components/charts/MonthlyTrendChart";
-import UpdateTransactionModal from "@/components/UpdatetransactionModel";
+import UpdateTransactionModal from "@/components/UpdateTransactionModel";
 import AddTransactionModal from "@/components/AddTransactionModel";
 import {
   MoreVertical,
