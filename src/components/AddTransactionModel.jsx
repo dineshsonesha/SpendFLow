@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar, ChevronDown, X } from "lucide-react";
 import { useAuth, useUser } from "@clerk/clerk-react";
 import RadioOption from "./RadioOption";
@@ -14,6 +14,18 @@ export default function AddTransactionModal({ isOpen, onClose, onTransactionSave
 
   const { getToken } = useAuth();
   const { user } = useUser();
+
+  // 🧹 Reset form whenever modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setTransactionType("expense");
+      setTitle("");
+      setAmount("");
+      setCategory("");
+      setDate(new Date().toISOString().split("T")[0]);
+      setDescription("");
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -185,7 +197,7 @@ export default function AddTransactionModal({ isOpen, onClose, onTransactionSave
             ></textarea>
           </div>
 
-          {/* Action Buttons */}
+          {/* Buttons */}
           <div className="mt-8 flex justify-end gap-4">
             <button
               type="button"
